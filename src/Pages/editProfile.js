@@ -70,7 +70,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       data : {
         basicInfoValues : basicInfoValues,
         workAndEducationValues : workAndEducationValues,
-        OtherDetailsValues : OtherDetailsValues
+        otherDetailsValues : OtherDetailsValues
       }
     }).then((response) => {
       isLoading = false
