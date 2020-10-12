@@ -57,7 +57,7 @@ const LoginSignUpForm = (props) => {
                         {(props.formType === "Login") &&
                             <>
                                 
-                                <Link to="/Register">New user? Register here</Link>
+                                <Link to="/register">New user? Register here</Link>
                             </>
                         }
                         

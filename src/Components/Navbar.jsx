@@ -4,14 +4,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {Image} from 'cloudinary-react'
 import CreatePost from './CreatePost'
 import Requests from './Requests'
 import axios from 'axios'
 import SearchIcon from '@material-ui/icons/Search';
 import  Button  from '@material-ui/core/Button';
-import userSearchModal from './userSearchModal'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,6 +96,14 @@ export default function SearchAppBar(props) {
       
     })
   }
+  let history = useHistory()
+  const handleLogout = () => {
+    history.push("/")
+      localStorage.clear()
+      
+
+  }
+
 
   return (
     <>
@@ -145,6 +152,7 @@ export default function SearchAppBar(props) {
                     </button>
                     </Link>
                     </div>
+                    <Button onClick={handleLogout} variant="contained" color="primary">Logout</Button>
          
         </Toolbar>
       </AppBar>
