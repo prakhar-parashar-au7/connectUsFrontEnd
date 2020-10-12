@@ -50,10 +50,9 @@ export const userLoggingIn = (userInfo) => {
         }).then((response) => {
             console.log(response.data.message)
              localStorage.setItem("token", response.data.token)
-             axios.defaults.headers.common = {'Authorization': `bearer ${response.data.token}`}           
-             dispatch(userLoggingActionCreator(response.data.user))
-             
-            
+             axios.defaults.headers.common = {'Authorization': `bearer ${response.data.token}`}  
+             console.log(response.data.user)         
+             dispatch(userLoggingActionCreator(response.data.user))                      
         })
     }
 }
@@ -65,5 +64,22 @@ export const userLoggingActionCreator = (user) => {
         payload : {
         user
     }
+}
+}
+
+export const getLoggedInUserInfo = (userId) => {
+    console.log("he")
+    return async (dispatch) => {
+        return axios({
+            method : 'post',
+            url : 'loggedInUserInfo',
+            data : {
+                userId : userId
+            }
+        }).then((response) => {
+            console.log(response) 
+           dispatch(userLoggingActionCreator(response.data))
+         })
+
 }
 }
