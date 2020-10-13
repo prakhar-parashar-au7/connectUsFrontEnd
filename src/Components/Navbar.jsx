@@ -136,6 +136,8 @@ export default function SearchAppBar(props) {
                        
                 <CreatePost id="createPost"/>
 
+                <Link to={"home"} activeClassName="active"><img src="https://img.icons8.com/bubbles/50/000000/home-page.png"/></Link>  
+
                 <Requests/>
 
                 

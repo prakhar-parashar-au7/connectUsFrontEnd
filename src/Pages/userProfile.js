@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import Coverflow from 'react-coverflow';
 import Post from '../Components/Post'
 import { Link } from 'react-router-dom';
+import Navbar from '../Components/Navbar'
 
 
 const UserProfile = (props) => {
@@ -16,6 +17,7 @@ const UserProfile = (props) => {
     const [userPhotos, setUserPhotos] = useState([])
     const currentUser = props.location.state.user
    const userLoggedIn = useSelector(state => state.userReducer.user)
+   const [addFriend, setAddFriend] = useState(false)
 
     useEffect(() => {
         console.log(currentUser)
@@ -48,7 +50,7 @@ const UserProfile = (props) => {
 
     const handleAddFriend = () => {
 
-        
+        setAddFriend(true)
 
            axios({
                method : "post",
@@ -68,6 +70,8 @@ const UserProfile = (props) => {
 
 
         <>
+
+<Navbar currentUser = {userLoggedIn} /> 
             {
                 (Object.keys(profileInfo).length != 0) ?
                     <div>
@@ -82,7 +86,7 @@ const UserProfile = (props) => {
                     
                         </div>
                         <div style={{marginLeft : "50px", marginTop : "70px"}}>
-                        <Button variant="contained" color="primary" onClick={handleAddFriend}>Add as a friend</Button>
+                        <Button variant="contained" color="primary" onClick={handleAddFriend}>{(!addFriend) ? "Add as a friend" : "Request Sent" }</Button>
                         </div>
                         </div>
 

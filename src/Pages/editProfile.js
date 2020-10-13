@@ -11,6 +11,7 @@ import WorkAndEducation from '../Components/WorkAndEducation'
 import OtherDetails from '../Components/OtherDetails'
 import axios from 'axios'
 import './styles/editProfile.css'
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +49,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
   const userId = useSelector(state => state.userReducer.user._id)
-
+  const history = useHistory()
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     
@@ -66,6 +67,7 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   const submitForm = () => {
     isLoading = true
+    history.push("/home")
     
     axios({
       method : 'post',
@@ -77,7 +79,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         otherDetailsValues : OtherDetailsValues
       }
     }).then((response) => {
-      isLoading = false
+     
     })
   }
  
