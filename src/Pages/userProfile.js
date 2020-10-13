@@ -49,7 +49,7 @@ const UserProfile = (props) => {
     }, [])
 
     const handleAddFriend = () => {
-
+        console.log(userPosts)
         setAddFriend(true)
 
            axios({
@@ -81,8 +81,8 @@ const UserProfile = (props) => {
                         
                         <div id="profile">
                             
-                            <Image publicId={profileInfo.profilePic} cloudName="prakhar-parashar" height="250" />
-                            <p style={{ marginTop: "10px" }}>{profileInfo.userName}</p>
+                            <Image publicId={profileInfo.profilePic} cloudName="prakhar-parashar" height="250" width = "200px"/>
+                            <h5 style={{ marginTop: "10px" }}>{profileInfo.userName}</h5>
                     
                         </div>
                         <div style={{marginLeft : "50px", marginTop : "70px"}}>
@@ -170,7 +170,7 @@ const UserProfile = (props) => {
                         </div>
 
 
-
+                        {(profileInfo.userId) ? 
                         <div id="friendsPhotos"  >
                         <h3>Friends</h3>
                             <div style={{display : "grid", gridTemplateColumns : "auto"}}>
@@ -183,7 +183,7 @@ const UserProfile = (props) => {
                                 
                             </div>)}
                         </div>
-                        </div>
+                        </div> : null }
                         <div id="posts">
                         <Coverflow width="200" height="350"
                                 displayQuantityOfSide={2}

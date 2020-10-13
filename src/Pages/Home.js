@@ -66,7 +66,7 @@ class Postpage extends Component {
                     this.props.Posts.length !== 0
                         
                         ?
-                        Posts.map(post =>
+                        Posts.reverse().map(post =>
                             <div style={{marginTop : "20px"}}>
                              <Post key={post._id} post={post} toPost = {this.toPost}/>
                              </div>)
