@@ -24,6 +24,8 @@ const MyVerticallyCenteredModal = (props) => {
     
    const handlePostClick = () => {
     dispatch(postCreateRequestAction({postText, assetId : photoInfo, userId : currentUser._id}))
+    setPostText("")
+    setPhotoInfo("")
     props.onHide()
      
    }
@@ -76,6 +78,7 @@ const photoStyle = {
           variant="filled"
           style = {{width : "400px"}}
           defaultValue ={postText}
+          value={postText}
           onChange={(e) => {setPostText(e.target.value)}}
         />
         <button onClick={() => setSmileyBox(false)}>😁</button>
