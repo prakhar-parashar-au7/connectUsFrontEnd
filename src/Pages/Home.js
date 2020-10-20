@@ -39,6 +39,7 @@ class Postpage extends Component {
      showUsers = (data) => {
           this.setState({searchedUsers : data})
           this.setState({modalShow : true})
+          console.log("hi")
      }
    
 

@@ -70,8 +70,6 @@ class PhotosUploader extends Component {
 }
 
 
-const dispatchMapper = {
-    
-}
 
-export default connect(null, dispatchMapper)(PhotosUploader)
+
+export default (PhotosUploader)
