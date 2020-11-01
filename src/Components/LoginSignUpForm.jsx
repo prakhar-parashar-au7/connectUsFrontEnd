@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './styles/loginSignup.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import PhotosUploader from './photoUploader';
 import { Image, Transformation } from 'cloudinary-react'
+import { Spinner } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+
 
 const LoginSignUpForm = (props) => {
 
@@ -11,9 +14,21 @@ const LoginSignUpForm = (props) => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [registerPhotoId, setRegisterPhotoId] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    
 
+
+   const user =  useSelector(state => 
+    state.userReducer.user
+    )
+    
+    useEffect(() => {
+      setIsLoading(false)
+    }, [user])
+    
     const handleClick = (e) => {
         e.preventDefault()
+        setIsLoading(true)
         props.formType === 'Register' ? props.userRegistered({ userName, password, email, registerPhotoId}) : props.userLoggingIn({ userName, password })
     }
     return (
@@ -51,7 +66,16 @@ const LoginSignUpForm = (props) => {
                         <input type="password" onChange={(e) => setPassword(e.target.value)} className="input" placeholder="Password"></input>
                         <br></br><br></br>
 
-                        <button type="submit" onClick={handleClick} className="btn btn-primary">{props.formType}</button>
+                        <button type="submit" onClick={handleClick} className="btn btn-primary">
+                        {
+                            (isLoading) ? <Spinner animation="border" variant="info" /> : props.formType
+
+                        }
+
+                            
+                            
+                            
+                            </button>
 
                         <br></br><br></br><br></br>
                         {(props.formType === "Login") &&

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {userLoggingIn} from '../redux/Actions/userActions'
 import LoginSignUpForm from '../Components/LoginSignUpForm'
 import { useHistory , Redirect} from 'react-router-dom';
-import {useSelector} from 'react-redux'
 
 
 
@@ -28,12 +27,22 @@ const Login = (props) => {
         
         return (
             
-            
-           
+           <div >
+               <div>
+
+              
+     <p>
+       <p>For Demo purpose only</p>
+      <p>Please register to see all the features.</p>
+     <p>Sign in with these credentials if you're in a hurry.</p> 
+      <p>Username : shikhar</p>
+      <p>Password : shikhar</p>
+      </p>
+      </div>
   <LoginSignUpForm formType="Login" userLoggingIn = {userLoggingIn}/>
-
   
-
+  
+  </div> 
 
         )
     }
